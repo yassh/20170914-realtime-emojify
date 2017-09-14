@@ -1,8 +1,9 @@
 {
-  "name": "vue-jsx-template",
+  "name": "realtime-emojify",
   "version": "1.0.0",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "node-emoji": "^1.8.1",
     "vue": "^2.4.2"
   },
   "devDependencies": {

@@ -1,82 +1,41 @@
 import Vue from 'vue'
-
-const Counter = {
-  props: {
-    step: {
-      type: Number,
-      default: 1,
-    },
-  },
-  data() {
-    return {
-      count: 0,
-    }
-  },
-  methods: {
-    decrease() {
-      this.count -= this.step
-    },
-    increase() {
-      this.count += this.step
-    },
-  },
-  render() {
-    const {
-      step, count, increase, decrease,
-    } = this
-
-    return (
-      <div>
-        <button type="button" onClick={decrease}>-{ step }</button>
-        { count }
-        <button type="button" onClick={increase}>+{ step }</button>
-      </div>
-    )
-  },
-}
+import emoji from 'node-emoji'
 
 const App = {
   data() {
     return {
-      message: 'こんにちは！',
-      items: ['Alpha', 'Beta', 'Gamma'],
-      inputValue: '',
+      inputValue: 'i :heart: emoji',
     }
   },
   methods: {
-    onSubmit(e) {
-      e.preventDefault()
-      this.items.push(this.inputValue)
-      this.inputValue = ''
-    },
     onInput(e) {
       this.inputValue = e.target.value
+    },
+    onClickClearButton() {
+      this.inputValue = ''
+    },
+  },
+  computed: {
+    output() {
+      return emoji.emojify(this.inputValue)
     },
   },
   render() {
     const {
-      message, items, inputValue, onInput, onSubmit,
+      inputValue, onInput, onClickClearButton, output,
     } = this
 
     return (
       <div>
-        <p>{ message }</p>
+        <h1>Realtime Emojify</h1>
 
-        <Counter />
-        <Counter step={10} />
+        <div class="input">
+          <textarea onInput={onInput} value={inputValue} rows={4}></textarea>
+          <button type="button" onClick={onClickClearButton}>クリア</button>
+          <a href="https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json" target="_blank">絵文字一覧</a>
+        </div>
 
-        <form onSubmit={onSubmit}>
-          <input type="text" onInput={onInput} value={inputValue} />
-          <input type="submit" value="Add" />
-        </form>
-
-        { items.length &&
-          <ul>
-            { items.map((item, i) => (
-              <li key={i}>{ item }</li>
-            ))}
-          </ul>
-        }
+        <div class="output">{output}</div>
       </div>
     )
   },

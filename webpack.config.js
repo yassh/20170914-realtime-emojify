@@ -32,7 +32,7 @@ const config = {
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: '**/*.html',
+        from: '**/*.{html,css}',
         context: SRC_DIR,
         to: DEST_DIR,
       },

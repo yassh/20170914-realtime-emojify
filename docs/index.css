@@ -1,0 +1,34 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.input textarea {
+  width: 100%;
+  padding: 5px;
+}
+
+.input button {
+  float: left;
+}
+
+.input a {
+  float: right;
+}
+
+.input::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.output {
+  margin-top: 50px;
+  padding: 10px;
+  background: #eee;
+  white-space: pre-wrap;
+}
