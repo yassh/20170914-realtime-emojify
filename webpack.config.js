@@ -8,6 +8,7 @@ const config = {
   context: SRC_DIR,
   entry: {
     'babel-polyfill': 'babel-polyfill',
+    'url-search-params': 'url-search-params',
     'index': './index.js',
   },
   output: {
